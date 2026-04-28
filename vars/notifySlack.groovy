@@ -1,4 +1,3 @@
-def call(Map params = [:]) {
-    echo "Slack Message: ${params.message}"
-    slackSend(channel: '#devops-notifications', message: params.message)
+def call(Map config = [:]) {
+    slackSend channel: '#devops-notifications', message: config.message
 }
