@@ -1,13 +1,4 @@
-import org.devops.NotificationService
-
-def call(Map config = [:]) {
-    // Validation
-    if (!config.message) {
-        error "notifySlack: 'message' parameter is required!"
-    }
-    
-    // Logic: use the class we just made
-    echo "Sending Slack Notification: ${config.message}"
-    def notificationService = new NotificationService(this)
-    notificationService.sendSlack(config.message)
+def call(Map params = [:]) {
+    echo "Slack Message: ${params.message}"
+    slackSend(channel: '#devops-notifications', message: params.message)
 }
